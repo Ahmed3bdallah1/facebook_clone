@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:facebook_clone/core/firebase_constants/firebase_collection_category_name.dart';
+import 'package:facebook_clone/core/firebase_constants/firebase_field_names.dart';
 import 'package:facebook_clone/core/widgets/toast.dart';
 import 'package:facebook_clone/features/posts/data/repos/posts_repo.dart';
 import 'package:facebook_clone/features/posts/models/comment_model.dart';
@@ -17,9 +18,7 @@ class PostsRepoImp extends PostsRepo {
 
   @override
   Future<String?> post(
-      {required String post,
-      required File file,
-      required String postType}) async {
+      {required String post, File? file, required String postType}) async {
     try {
       final String postId = const Uuid().v1();
       print(postId);
@@ -27,7 +26,7 @@ class PostsRepoImp extends PostsRepo {
       final DateTime shareTime = DateTime.now();
 
       final path = _storage.ref(postType).child(postId);
-      final taskSnapshot = await path.putFile(file);
+      final taskSnapshot = await path.putFile(file!);
       final downloadUrl = await taskSnapshot.ref.getDownloadURL();
 
       PostModel postModel = PostModel(
@@ -70,7 +69,7 @@ class PostsRepoImp extends PostsRepo {
 
       _firestore
           .collection(FirebaseCollectionCategoryName.comments)
-          .doc(postId)
+          .doc(commentId)
           .set(comment.toMap());
 
       return null;
@@ -84,6 +83,24 @@ class PostsRepoImp extends PostsRepo {
   Future<String?> likeAndDislikePosts(
       {required String postId, required List<String> likes}) async {
     try {
+      final String userId = _auth.currentUser!.uid;
+
+      if (likes.contains(userId)) {
+        _firestore
+            .collection(FirebaseCollectionCategoryName.posts)
+            .doc(postId)
+            .update({
+          FirebaseFieldNames.likes: FieldValue.arrayRemove([userId])
+        });
+      } else {
+        _firestore
+            .collection(FirebaseCollectionCategoryName.posts)
+            .doc(postId)
+            .update({
+          FirebaseFieldNames.likes: FieldValue.arrayUnion([userId])
+        });
+      }
+
       return null;
     } catch (e) {
       return e.toString();
@@ -92,8 +109,29 @@ class PostsRepoImp extends PostsRepo {
 
   @override
   Future<String?> likeDislikeComment(
-      {required String commentId, required List<String> likes}) {
-    // TODO: implement likeDislikeComment
-    throw UnimplementedError();
+      {required String commentId, required List<String> likes}) async {
+    try {
+      final String userId = _auth.currentUser!.uid;
+
+      if (likes.contains(userId)) {
+        _firestore
+            .collection(FirebaseCollectionCategoryName.comments)
+            .doc(commentId)
+            .update({
+          FirebaseFieldNames.likes: FieldValue.arrayRemove([userId])
+        });
+      } else {
+        _firestore
+            .collection(FirebaseCollectionCategoryName.comments)
+            .doc(commentId)
+            .update({
+          FirebaseFieldNames.likes: FieldValue.arrayUnion([userId])
+        });
+      }
+
+      return null;
+    } catch (e) {
+      return e.toString();
+    }
   }
 }
