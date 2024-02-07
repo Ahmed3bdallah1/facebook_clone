@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           )
         ],
         bottom: TabBar(
-          tabs: TabsConstants.getHomeScreenTabs(_tabController.index),
+          tabs: TabsConstants.homeScreenTabs(_tabController.index),
           controller: _tabController,
           onTap: (index) {
             setState(() {});

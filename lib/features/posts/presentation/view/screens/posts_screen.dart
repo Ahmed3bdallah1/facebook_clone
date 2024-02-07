@@ -10,17 +10,7 @@ class PostsPage extends StatelessWidget {
     return const CustomScrollView(
       slivers: [
         MakePostWidget(),
-        SliverToBoxAdapter(
-          child: SizedBox(height: 8),
-        ),
-
-        // // Stories View
-        // StoriesView(),
-        // SliverToBoxAdapter(
-        //   child: SizedBox(height: 8),
-        // ),
-        //
-        // displays list of posts
+        SliverToBoxAdapter(child: SizedBox(height: 8)),
         PostsList(),
       ],
     );

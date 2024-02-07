@@ -1,10 +1,11 @@
 import 'package:facebook_clone/features/posts/presentation/view/screens/posts_screen.dart';
+import 'package:facebook_clone/features/posts/presentation/view/screens/videos_screen.dart';
 import 'package:flutter/material.dart';
 
 class TabsConstants {
   TabsConstants._();
 
-  static List<Tab> getHomeScreenTabs(int index) {
+  static List<Tab> homeScreenTabs(int index) {
     return [
       Tab(
         icon: Icon(
@@ -42,14 +43,11 @@ class TabsConstants {
   static const List<Widget> screens = [
     PostsPage(),
     // FriendsScreen(),
-    // VideosScreen(),
     // ProfileScreen(),
     Center(
       child: Text('friends Screen'),
     ),
-    Center(
-      child: Text('videos Screen'),
-    ),
+    VideosScreen(),
     Center(
       child: Text('profile Screen'),
     ),
