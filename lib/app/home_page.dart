@@ -2,17 +2,20 @@ import 'package:facebook_clone/config/routes/routes.dart';
 import 'package:facebook_clone/core/constants/color_constants.dart';
 import 'package:facebook_clone/core/constants/tabs.dart';
 import 'package:facebook_clone/core/widgets/circle_icon_button.dart';
+import 'package:facebook_clone/features/auth/presentation/managers/auth_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  ConsumerState<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+class _HomePageState extends ConsumerState<HomePage>
+    with TickerProviderStateMixin {
   late final TabController _tabController;
 
   @override
@@ -46,6 +49,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               Navigator.pushNamed(context, Routes.chatsScreen);
             },
             icon: FontAwesomeIcons.facebookMessenger,
+          ),
+          CircleIconButton(
+            onPressed: () {
+              ref.read(authProvider).signOut();
+            },
+            icon: FontAwesomeIcons.arrowRightFromBracket,
           )
         ],
         bottom: TabBar(

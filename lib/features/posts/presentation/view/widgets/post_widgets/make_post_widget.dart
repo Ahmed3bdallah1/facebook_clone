@@ -1,6 +1,7 @@
 import 'package:facebook_clone/config/routes/routes.dart';
 import 'package:facebook_clone/core/constants/color_constants.dart';
 import 'package:facebook_clone/features/posts/presentation/view/widgets/profile_small_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -23,9 +24,11 @@ class MakePostWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5),
-                  child: ProfileImage(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: ProfileImage(
+                    userId: FirebaseAuth.instance.currentUser!.uid,
+                  ),
                 ),
                 _buildPostTextField(),
                 const Padding(

@@ -13,44 +13,43 @@ class PostTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Container(
-      color: Colors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Post Header
-          PostInfoTile(
-            datePublished: post.createdAt,
-            userId: post.userId,
-          ),
-          // Post Text
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-            child: Text(post.post),
-          ),
-          // Post Video / Image
-          ViewPostImagesOrVideo(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Post Header
+        PostInfoTile(
+          datePublished: post.createdAt,
+          userId: post.userId,
+        ),
+        // Post Text
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+          child: Text(post.post),
+        ),
+        // Post Video / Image
+        Center(
+          child: ViewPostImagesOrVideo(
             url: post.fileUrl,
             fileType: post.postType,
           ),
+        ),
 
-          // Likes and comment buttons
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 15,
-              vertical: 12,
-            ),
-            child: Column(
-              children: [
-                // Likes
-                Likes(likes: post.likes),
-                const Divider(),
-                LikeCommentShare(post: post),
-              ],
-            ),
-          )
-        ],
-      ),
+        // Likes and comment buttons
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 15,
+            vertical: 12,
+          ),
+          child: Column(
+            children: [
+              // Likes
+              Likes(likes: post.likes),
+              const Divider(),
+              LikeCommentShare(post: post),
+            ],
+          ),
+        )
+      ],
     );
   }
 }

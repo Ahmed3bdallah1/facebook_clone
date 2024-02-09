@@ -11,8 +11,7 @@ import 'liked_comment.dart';
 class CommentTile extends ConsumerWidget {
   final CommentModel commentModel;
 
-  const CommentTile(
-      {super.key, required this.commentModel});
+  const CommentTile({super.key, required this.commentModel});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -35,12 +34,12 @@ class CommentInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(usersInfoProvider(commentModel.authorId));
+    final user = ref.watch(usersIdInfoProvider(commentModel.authorId));
     return user.when(data: (userData) {
       return Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ProfileImage(),
+          ProfileImage(userId: commentModel.authorId),
           Flexible(
             child: Padding(
               padding: const EdgeInsets.only(right: 20, left: 10),

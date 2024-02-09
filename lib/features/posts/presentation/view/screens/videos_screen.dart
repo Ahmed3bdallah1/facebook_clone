@@ -32,15 +32,11 @@ class VideosScreen extends ConsumerWidget {
         );
       },
       error: (error, stackTrace) {
-        return const SliverToBoxAdapter(
-          child: Center(child: Text("Error")),
-        );
+        return const Center(child: Icon(Icons.error));
       },
       loading: () {
-        return const SliverToBoxAdapter(
-          child: Center(
-            child: CircularProgressIndicator(),
-          ),
+        return const Center(
+          child: CircularProgressIndicator(),
         );
       },
     );

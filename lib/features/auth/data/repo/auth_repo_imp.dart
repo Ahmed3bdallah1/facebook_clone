@@ -36,23 +36,24 @@ class AuthRepoImp extends AuthRepo {
       required String email,
       required String password,
       required File? image}) async {
+    late String? download;
     try {
-      final credential = _firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
-
       // storing image in firebase storage
       final imagePath = _storage
           .ref(FirebaseStorageFolders.profilePics)
           .child(FirebaseAuth.instance.currentUser!.uid);
 
+      // getting picture url
+
       if (image == null) {
         return null;
       }
 
-      // getting picture url
+      final credential = _firebaseAuth.createUserWithEmailAndPassword(
+          email: email, password: password);
 
       final imageSnapshot = await imagePath.putFile(image);
-      final download = await imageSnapshot.ref.getDownloadURL();
+      download = await imageSnapshot.ref.getDownloadURL();
 
       // getting object from the user model
       UserModel user = UserModel(
@@ -75,16 +76,16 @@ class AuthRepoImp extends AuthRepo {
 
       return credential;
     } catch (e) {
-      showToastMessage(text: e.toString());
+      showToastMessage(text: "Failed to create account.\nplease put an image");
       return null;
     }
   }
 
   @override
-  Future<UserModel> getUserInfo() async {
+  Future<UserModel> getUserInfo(String userId) async {
     final userData = await _firestore
         .collection(FirebaseCollectionCategoryName.users)
-        .doc(_firebaseAuth.currentUser!.uid)
+        .doc(userId)
         .get();
 
     // taking user object from remote source

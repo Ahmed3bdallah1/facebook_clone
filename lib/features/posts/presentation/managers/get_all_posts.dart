@@ -28,3 +28,25 @@ final getAllPosts = StreamProvider<Iterable<PostModel>>((ref) {
   });
   return controller.stream;
 });
+
+final usersIdPostsProvider =
+    StreamProvider.autoDispose.family<Iterable<PostModel>, String>(
+  (ref, userId) {
+    final controller = StreamController<Iterable<PostModel>>();
+    final sub = FirebaseFirestore.instance
+        .collection(FirebaseCollectionCategoryName.posts)
+        .where(FirebaseFieldNames.uid, isEqualTo: userId)
+        .snapshots()
+        .listen(
+      (snapshot) {
+        final posts = snapshot.docs.map(
+          (postData) => PostModel.fromMap(postData.data()),
+        );
+        print(posts.length);
+        controller.sink.add(posts);
+      },
+    );
+
+    return controller.stream;
+  },
+);

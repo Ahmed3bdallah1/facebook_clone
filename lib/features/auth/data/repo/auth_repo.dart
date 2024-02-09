@@ -21,7 +21,7 @@ abstract class AuthRepo {
 
   Future<String?> signOut();
 
-  Future<UserModel> getUserInfo();
+  Future<UserModel> getUserInfo(String userId);
 
   Future<String?> verifyEmail();
 

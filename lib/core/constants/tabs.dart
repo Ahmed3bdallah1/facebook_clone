@@ -1,5 +1,9 @@
+import 'package:facebook_clone/app/profile_screen.dart';
+import 'package:facebook_clone/features/friends/presentation/view/screens/friends_screen.dart';
 import 'package:facebook_clone/features/posts/presentation/view/screens/posts_screen.dart';
 import 'package:facebook_clone/features/posts/presentation/view/screens/videos_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TabsConstants {
@@ -21,38 +25,36 @@ class TabsConstants {
       ),
       Tab(
         icon: Icon(
-          index == 2 ? Icons.smart_display : Icons.smart_display_outlined,
+          index == 2
+              ? CupertinoIcons.videocam_circle_fill
+              : CupertinoIcons.videocam_circle,
           color: Colors.blue,
         ),
       ),
       Tab(
         icon: Icon(
-          index == 3 ? Icons.account_circle : Icons.account_circle_outlined,
+          index == 3 ? CupertinoIcons.bell_fill : CupertinoIcons.bell,
           color: Colors.blue,
         ),
       ),
       Tab(
         icon: Icon(
-          index == 5 ? Icons.density_medium : Icons.density_medium_outlined,
+          index == 4 ? Icons.account_circle : Icons.account_circle_outlined,
           color: Colors.blue,
         ),
       ),
     ];
   }
 
-  static const List<Widget> screens = [
-    PostsPage(),
-    // FriendsScreen(),
-    // ProfileScreen(),
-    Center(
-      child: Text('friends Screen'),
+  static String userId = FirebaseAuth.instance.currentUser!.uid;
+
+  static List<Widget> screens = [
+    const PostsPage(),
+    const FriendsScreen(),
+    const VideosScreen(),
+    const Center(
+      child: Text('Notifications Screen'),
     ),
-    VideosScreen(),
-    Center(
-      child: Text('profile Screen'),
-    ),
-    Center(
-      child: Text('Settings Screen'),
-    ),
+    ProfileScreen(userId: userId),
   ];
 }

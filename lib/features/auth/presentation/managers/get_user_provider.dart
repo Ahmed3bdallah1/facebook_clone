@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../model/user_model.dart';
 
-final usersInfoProvider =
+final usersIdInfoProvider =
     FutureProvider.autoDispose.family<UserModel, String>((ref, userId) {
   return FirebaseFirestore.instance
       .collection(FirebaseCollectionCategoryName.users)
