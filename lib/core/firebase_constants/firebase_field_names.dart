@@ -37,7 +37,7 @@ class FirebaseFieldNames {
   static const members = 'members';
   static const chatroomId = 'chatroom_id';
   static const lastMessage = 'last_message';
-  static const lastMessageTs = 'last_message_ts';
+  static const lastMessageTimeStamp = 'last_message_timestamp';
   static const message = 'message';
   static const senderId = 'sender_id';
   static const receiverId = 'receiver_id';
