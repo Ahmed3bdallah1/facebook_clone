@@ -14,11 +14,11 @@ class CircleIconButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         horizontal: 5,
       ),
-      child: CircleAvatar(
-        backgroundColor: ColorsConstants.greyColor,
-        radius: 20,
-        child: InkWell(
-          onTap: onPressed,
+      child: InkWell(
+        onTap: onPressed,
+        child: CircleAvatar(
+          backgroundColor: ColorsConstants.greyColor,
+          radius: 20,
           child: FaIcon(
             icon,
             color: ColorsConstants.blackColor,

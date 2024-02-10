@@ -33,9 +33,9 @@ final usersIdPostsProvider =
     StreamProvider.autoDispose.family<Iterable<PostModel>, String>(
   (ref, userId) {
     final controller = StreamController<Iterable<PostModel>>();
-    final sub = FirebaseFirestore.instance
+    FirebaseFirestore.instance
         .collection(FirebaseCollectionCategoryName.posts)
-        .where(FirebaseFieldNames.uid, isEqualTo: userId)
+        .where(FirebaseFieldNames.posterId, isEqualTo: userId)
         .snapshots()
         .listen(
       (snapshot) {

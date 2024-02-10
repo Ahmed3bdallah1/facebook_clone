@@ -60,27 +60,33 @@ class ProfileScreen extends ConsumerWidget {
                                 label: 'Send Message',
                                 color: Colors.transparent,
                               ),
-                        const SizedBox(height: 20),
-                        Column(
-                          children: [
-                            IconTextButton(
-                              icon: user.gender == 'male'
-                                  ? Icons.male
-                                  : Icons.female,
-                              label: user.gender,
-                            ),
-                            const SizedBox(height: 10),
-                            IconTextButton(
-                              icon: Icons.cake,
-                              label: user.birthDay.toString().substring(0, 10),
-                            ),
-                            const SizedBox(height: 10),
-                            IconTextButton(
-                              icon: Icons.email,
-                              label: user.email,
-                            ),
-                          ],
+                        const SizedBox(height: 10),
+                        const Divider(color: Colors.grey, thickness: 1),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Column(
+                            children: [
+                              IconTextButton(
+                                icon: user.gender == 'male'
+                                    ? Icons.male
+                                    : Icons.female,
+                                label: user.gender,
+                              ),
+                              const SizedBox(height: 10),
+                              IconTextButton(
+                                icon: Icons.cake,
+                                label:
+                                    user.birthDay.toString().substring(0, 10),
+                              ),
+                              const SizedBox(height: 10),
+                              IconTextButton(
+                                icon: Icons.email,
+                                label: user.email,
+                              ),
+                            ],
+                          ),
                         ),
+                        const Divider(color: Colors.grey, thickness: 1),
                       ],
                     ),
                   ),

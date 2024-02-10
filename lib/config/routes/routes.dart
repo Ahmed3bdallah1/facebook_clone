@@ -41,7 +41,7 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const HomePage());
 
       default:
-        return MaterialPageRoute(builder: (_) => const CreateAccountPage());
+        return MaterialPageRoute(builder: (_) => const Login());
     }
   }
 }
