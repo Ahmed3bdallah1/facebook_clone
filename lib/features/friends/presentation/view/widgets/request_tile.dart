@@ -13,7 +13,7 @@ class RequestTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(usersIdInfoProvider(userId));
+    final user = ref.watch(getUsersIdInfoProvider(userId));
 
     return user.when(
       data: (userData) {

@@ -2,6 +2,7 @@ import 'package:facebook_clone/app/home_page.dart';
 import 'package:facebook_clone/app/profile_screen.dart';
 import 'package:facebook_clone/features/auth/presentation/view/screens/create_account.dart';
 import 'package:facebook_clone/features/auth/presentation/view/screens/login_screen.dart';
+import 'package:facebook_clone/features/chats/presentation/view/screens/chat_screen.dart';
 import 'package:facebook_clone/features/chats/presentation/view/screens/chats_screen.dart';
 import 'package:facebook_clone/features/posts/presentation/view/screens/add_post_screen.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,12 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const Login());
 
       case chatScreen:
-        return MaterialPageRoute(builder: (_) => const Login());
+        final arguments = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(
+            builder: (_) => ChatScreen(
+                  userId: arguments["userId"],
+                  user: arguments["user"],
+                ));
 
       case chatsScreen:
         return MaterialPageRoute(builder: (_) => const ChatsScreen());

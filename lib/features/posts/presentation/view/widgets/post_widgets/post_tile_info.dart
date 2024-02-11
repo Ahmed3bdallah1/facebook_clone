@@ -16,7 +16,7 @@ class PostInfoTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userInfo = ref.watch(usersIdInfoProvider(userId));
+    final userInfo = ref.watch(getUsersIdInfoProvider(userId));
     return userInfo.when(
       data: (user) {
         return Padding(

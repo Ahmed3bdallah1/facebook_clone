@@ -1,7 +1,6 @@
 import 'package:facebook_clone/core/constants/color_constants.dart';
 import 'package:facebook_clone/features/auth/presentation/managers/get_user_provider.dart';
 import 'package:facebook_clone/features/posts/models/comment_model.dart';
-import 'package:facebook_clone/features/posts/models/post_model.dart';
 import 'package:facebook_clone/features/posts/presentation/view/widgets/profile_small_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,7 +33,7 @@ class CommentInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(usersIdInfoProvider(commentModel.authorId));
+    final user = ref.watch(getUsersIdInfoProvider(commentModel.authorId));
     return user.when(data: (userData) {
       return Row(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,4 +1,3 @@
-import 'package:facebook_clone/config/routes/routes.dart';
 import 'package:facebook_clone/core/constants/custom_buttom_transition.dart';
 import 'package:facebook_clone/features/posts/models/post_model.dart';
 import 'package:facebook_clone/features/posts/presentation/managers/post_provider.dart';

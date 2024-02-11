@@ -3,7 +3,6 @@ import 'package:facebook_clone/features/friends/presentation/managers/all_reques
 import 'package:facebook_clone/features/friends/presentation/view/widgets/request_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'friend_tile.dart';
 
 class RequestsList extends ConsumerStatefulWidget {
   const RequestsList({super.key});

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:facebook_clone/config/routes/routes.dart';
 import 'package:facebook_clone/core/constants/values.dart';
 import 'package:facebook_clone/core/widgets/bottom.dart';
 import 'package:facebook_clone/features/auth/presentation/managers/get_user_provider.dart';
@@ -20,7 +21,7 @@ class ProfileScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final myUid = FirebaseAuth.instance.currentUser!.uid;
-    final userData = ref.watch(usersIdInfoProvider(userId ?? myUid));
+    final userData = ref.watch(getUsersIdInfoProvider(userId ?? myUid));
 
     return userData.when(
       data: (user) {
@@ -56,7 +57,12 @@ class ProfileScreen extends ConsumerWidget {
                         userId == myUid
                             ? Container()
                             : GeneralButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).pushNamed(
+                                    Routes.chatScreen,
+                                    arguments: {"userId": userId, "user": user},
+                                  );
+                                },
                                 label: 'Send Message',
                                 color: Colors.transparent,
                               ),
