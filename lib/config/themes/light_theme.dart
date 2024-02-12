@@ -12,9 +12,6 @@ ThemeData lightTheme = ThemeData(
       fontSize: 20.0,
       fontWeight: FontWeight.w500,
     ),
-    iconTheme: IconThemeData(
-      color: Colors.indigo,
-    ),
   ),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: Colors.indigo,
@@ -39,4 +36,5 @@ ThemeData lightTheme = ThemeData(
     ),
   ),
   scaffoldBackgroundColor: ColorsConstants.realWhiteColor,
+  iconTheme: const IconThemeData(color: Colors.black),
 );

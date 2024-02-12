@@ -16,12 +16,12 @@ class Likes extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const CircleAvatar(
-          radius: 12,
+          radius: 10,
           backgroundColor: ColorsConstants.blueColor,
           child: FaIcon(
             FontAwesomeIcons.solidThumbsUp,
             color: Colors.white,
-            size: 15,
+            size: 12,
           ),
         ),
         const SizedBox(width: 5),

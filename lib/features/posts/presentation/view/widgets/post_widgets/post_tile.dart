@@ -24,7 +24,7 @@ class PostTile extends ConsumerWidget {
         // Post Text
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-          child: Text(post.post),
+          child: Text(post.post,style: const TextStyle(fontSize: 16),),
         ),
         // Post Video / Image
         Center(

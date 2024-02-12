@@ -15,47 +15,40 @@ class MakePostWidget extends StatelessWidget {
         onTap: () {
           Navigator.of(context).pushNamed(Routes.createPost);
         },
-        child: Container(
-          color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 10,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: ProfileImage(
-                    userId: FirebaseAuth.instance.currentUser!.uid,
-                  ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 10,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: ProfileImage(
+                  userId: FirebaseAuth.instance.currentUser!.uid,
                 ),
-                _buildPostTextField(),
-                const Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: Icon(
-                    FontAwesomeIcons.solidImages,
-                    color: Colors.green,
+              ),
+              Expanded(
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    border: Border.all(color: ColorsConstants.darkGreyColor),
                   ),
+                  child: const Text("What's on your mind?"),
                 ),
-              ],
-            ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Icon(
+                  FontAwesomeIcons.solidImages,
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
-}
-
-Widget _buildPostTextField() {
-  return Expanded(
-    child: Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25),
-        border: Border.all(color: ColorsConstants.darkGreyColor),
-      ),
-      child: const Text("What's on your mind?"),
-    ),
-  );
 }

@@ -12,9 +12,7 @@ ThemeData darkTheme = ThemeData(
       fontSize: 20.0,
       fontWeight: FontWeight.w500,
     ),
-    iconTheme: IconThemeData(
-      color: Colors.white,
-    ),
+    iconTheme: IconThemeData(color: Colors.white),
   ),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: Colors.grey,
@@ -38,5 +36,8 @@ ThemeData darkTheme = ThemeData(
       height: 1.3,
     ),
   ),
-  scaffoldBackgroundColor: ColorsConstants.blackColor,
+  iconButtonTheme: IconButtonThemeData(style: ButtonStyle(
+      foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+  )),
+  scaffoldBackgroundColor: ColorsConstants.loginScreenColor,
 );

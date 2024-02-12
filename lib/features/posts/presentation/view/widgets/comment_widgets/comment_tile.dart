@@ -46,9 +46,8 @@ class CommentInfo extends ConsumerWidget {
                 width: MediaQuery.of(context).size.width,
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                    color: ColorsConstants.greyColor.withOpacity(.3),
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(color: Colors.grey)),
+                    color: ColorsConstants.messengerBlue.withOpacity(.1),
+                    borderRadius: BorderRadius.circular(15)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

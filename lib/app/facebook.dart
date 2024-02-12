@@ -16,6 +16,7 @@ class FaceBook extends StatelessWidget {
       title: 'Facebook clone',
       theme: lightTheme,
       darkTheme: darkTheme,
+      debugShowCheckedModeBanner: false,
       home: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
