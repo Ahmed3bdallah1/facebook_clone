@@ -36,7 +36,7 @@ class MakePostWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25),
                     border: Border.all(color: ColorsConstants.darkGreyColor),
                   ),
-                  child: const Text("What's on your mind?"),
+                  child: const Text("What's on your mind?",style: TextStyle(fontSize: 14),),
                 ),
               ),
               const Padding(

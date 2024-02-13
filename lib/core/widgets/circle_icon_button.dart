@@ -1,6 +1,4 @@
-import 'package:facebook_clone/core/constants/color_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CircleIconButton extends StatelessWidget {
   const CircleIconButton({super.key, required this.icon, this.onPressed});
@@ -11,19 +9,26 @@ class CircleIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 5,
-      ),
-      child: InkWell(
-        onTap: onPressed,
-        child: CircleAvatar(
-          backgroundColor: ColorsConstants.greyColor,
-          radius: 20,
-          child: FaIcon(
-            icon,
-            color: ColorsConstants.blackColor,
-            size: 20,
-          ),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      child: SizedBox(
+        height: 40,
+        child: Row(
+          children: [
+            InkWell(
+              onTap: onPressed,
+              child: ClipOval(
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  color: Colors.grey.withOpacity(.3),
+                  child: Icon(
+                    icon,
+                    size: 20,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

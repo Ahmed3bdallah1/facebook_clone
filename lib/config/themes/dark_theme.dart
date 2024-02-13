@@ -29,6 +29,16 @@ ThemeData darkTheme = ThemeData(
       fontSize: 18.0,
       color: Colors.white,
     ),
+    bodyMedium: TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 18.0,
+      color: Colors.white,
+    ),
+    bodySmall: TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 18.0,
+      color: Colors.white,
+    ),
     titleMedium: TextStyle(
       fontWeight: FontWeight.w600,
       fontSize: 14.0,
@@ -36,8 +46,6 @@ ThemeData darkTheme = ThemeData(
       height: 1.3,
     ),
   ),
-  iconButtonTheme: IconButtonThemeData(style: ButtonStyle(
-      foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-  )),
+  iconTheme: const IconThemeData(color: Colors.white),
   scaffoldBackgroundColor: ColorsConstants.loginScreenColor,
 );

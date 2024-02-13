@@ -25,6 +25,7 @@ class CommentLikes extends ConsumerWidget {
             children: [
               Text(
                 comment.createdAt.toString().substring(11, 16),
+                style: const TextStyle(fontSize: 14),
               ),
               TextButton(
                 onPressed: () async {
@@ -47,16 +48,16 @@ class CommentLikes extends ConsumerWidget {
           Row(
             children: [
               const CircleAvatar(
-                radius: 12,
+                radius: 10,
                 backgroundColor: ColorsConstants.blueColor,
                 child: FaIcon(
                   FontAwesomeIcons.solidThumbsUp,
                   color: Colors.white,
-                  size: 15,
+                  size: 12,
                 ),
               ),
               const SizedBox(width: 5),
-              Text(comment.likes.length.toString()),
+              Text(comment.likes.length.toString(),style: TextStyle(fontSize: 14),),
             ],
           ),
         ],

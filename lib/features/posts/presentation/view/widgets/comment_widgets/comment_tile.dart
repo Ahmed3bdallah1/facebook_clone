@@ -37,6 +37,7 @@ class CommentInfo extends ConsumerWidget {
     return user.when(data: (userData) {
       return Row(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           ProfileImage(userId: commentModel.authorId),
           Flexible(
@@ -52,14 +53,10 @@ class CommentInfo extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      userData.fullName,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
+                      userData.fullName
                     ),
-                    Text(commentModel.text),
+                    const SizedBox(height: 5),
+                    Text(commentModel.text,style: const TextStyle(fontSize: 14),),
                   ],
                 ),
               ),

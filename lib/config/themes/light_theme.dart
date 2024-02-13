@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 ThemeData lightTheme = ThemeData(
   primarySwatch: Colors.indigo,
+
   appBarTheme: const AppBarTheme(
     titleSpacing: 20.0,
     backgroundColor: Colors.transparent,
@@ -12,6 +13,9 @@ ThemeData lightTheme = ThemeData(
       fontSize: 20.0,
       fontWeight: FontWeight.w500,
     ),
+    iconTheme: IconThemeData(
+      color: Colors.black
+    )
   ),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: Colors.indigo,
@@ -28,9 +32,42 @@ ThemeData lightTheme = ThemeData(
       fontSize: 18.0,
       color: Colors.black,
     ),
+    bodyMedium: TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 18.0,
+      color: Colors.black,
+    ),
+    bodySmall: TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 18.0,
+      color: Colors.black,
+    ),
     titleMedium: TextStyle(
       fontWeight: FontWeight.w600,
-      fontSize: 14.0,
+      fontSize: 18.0,
+      color: Colors.black,
+      height: 1.3,
+    ),
+  ),
+  primaryTextTheme: const TextTheme(
+    bodyLarge: TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 18.0,
+      color: Colors.black,
+    ),
+    bodyMedium: TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 18.0,
+      color: Colors.black,
+    ),
+    bodySmall: TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 18.0,
+      color: Colors.black,
+    ),
+    titleMedium: TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 18.0,
       color: Colors.black,
       height: 1.3,
     ),

@@ -28,7 +28,7 @@ class LikeCommentShare extends ConsumerWidget {
               ? FontAwesomeIcons.solidThumbsUp
               : FontAwesomeIcons.thumbsUp,
           color:
-              isLiked ? ColorsConstants.blueColor : ColorsConstants.blackColor,
+              isLiked ? ColorsConstants.blueColor : null,
           label: 'Like',
           onPressed: () {
             ref

@@ -25,7 +25,7 @@ class Likes extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 5),
-        Text('${likes.length}'),
+        Text('${likes.length}', style: const TextStyle(fontSize: 14)),
       ],
     );
   }

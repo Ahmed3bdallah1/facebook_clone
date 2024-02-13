@@ -53,6 +53,7 @@ class _CreateAccountPageState extends ConsumerState<CreateAccountPage> {
             image: image,
           )
           .then((credential) {
+        Navigator.pop(context);
         if (!credential!.user!.emailVerified) {
           Navigator.pop(context);
         }

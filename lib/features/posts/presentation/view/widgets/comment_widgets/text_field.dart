@@ -44,7 +44,6 @@ class _CommentTextFieldState extends ConsumerState<CommentTextField> {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      color: Colors.white,
       padding: const EdgeInsets.all(8.0),
       child: Container(
         padding: const EdgeInsets.only(

@@ -21,9 +21,9 @@ class IconTextButton extends StatelessWidget {
       onTap: onPressed,
       child: Row(
         children: [
-          FaIcon(icon, size: 20, color: color),
+          FaIcon(icon, size: 16, color: color),
           const SizedBox(width: 8),
-          Text(label),
+          Text(label,style: TextStyle(fontSize: 14),),
         ],
       ),
     );
