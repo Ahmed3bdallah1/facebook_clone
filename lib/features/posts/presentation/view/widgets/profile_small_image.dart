@@ -6,8 +6,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProfileImage extends ConsumerWidget {
   final String userId;
+  final double? height;
+  final double? width;
 
-  const ProfileImage({super.key, required this.userId});
+  const ProfileImage(
+      {super.key, required this.userId, this.height, this.width});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,8 +21,8 @@ class ProfileImage extends ConsumerWidget {
             return ClipOval(
               child: Image.asset(
                 "assets/new_account.jpg",
-                height: 40,
-                width: 40,
+                height: height??40,
+                width: width??40,
               ),
             );
           }
@@ -43,6 +46,51 @@ class ProfileImage extends ConsumerWidget {
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
+            );
+          }
+
+          return SizedBox(
+              height: 40,
+              width: 40,
+              child: ClipOval(child: Image.asset("assets/new_account.jpg")));
+        });
+  }
+}
+
+class ProfileImageClipRect extends ConsumerWidget {
+  final String userId;
+  final double? height;
+  final double? width;
+
+  const ProfileImageClipRect(
+      {super.key, required this.userId, this.height, this.width});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return FutureBuilder(
+        future: ref.read(authProvider).getUserInfo(userId),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return ClipOval(
+              child: Image.asset(
+                "assets/new_account.jpg",
+                height: height??40,
+                width: width??40,
+              ),
+            );
+          }
+
+          if (snapshot.hasData) {
+            final user = snapshot.data;
+
+            return SizedBox(
+              height: 120,
+              width: 120,
+              child: CachedNetworkImage(
+                fit: BoxFit.fitWidth,
+                imageUrl: user!.profilePicUrl,
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              )
             );
           }
 
