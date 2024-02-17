@@ -51,7 +51,11 @@ class ProfileScreen extends ConsumerWidget {
                         const SizedBox(height: 20),
                         userId == myUid
                             ? GeneralButton(
-                                onPressed: () {}, label: 'Add to Story')
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, Routes.createStory);
+                                },
+                                label: 'Add to Story')
                             : AddFriend(user: user),
                         const SizedBox(height: 10),
                         userId == myUid
