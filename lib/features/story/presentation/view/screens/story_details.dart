@@ -32,7 +32,6 @@ class _StoryDetailScreenState extends ConsumerState<StoryDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsConstants.realWhiteColor,
       body: Stack(
         children: [
           Center(
