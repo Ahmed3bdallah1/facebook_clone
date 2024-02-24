@@ -10,9 +10,11 @@ class AddFriend extends ConsumerStatefulWidget {
   const AddFriend({
     super.key,
     required this.user,
+    required this.width,
   });
 
   final UserModel user;
+  final double width;
 
   @override
   ConsumerState<AddFriend> createState() => _AddFriendButtonState();
@@ -24,12 +26,21 @@ class _AddFriendButtonState extends ConsumerState<AddFriend> {
   @override
   Widget build(BuildContext context) {
     final myUid = FirebaseAuth.instance.currentUser!.uid;
+
+    // check if the user received requests's list contains my id
     final requestSent = widget.user.receivedRequests.contains(myUid);
+
+    // check if the user sent a friend request for me
     final requestReceived = widget.user.sentRequests.contains(myUid);
+
+    // check if the user is in my friends list
     final alreadyFriend = widget.user.friends.contains(myUid);
     return isLoading
         ? const Center(child: CircularProgressIndicator())
         : GeneralButton(
+            width: widget.width,
+            radius: 6,
+            height: 40,
             onPressed: requestReceived
                 ? null
                 : () async {
