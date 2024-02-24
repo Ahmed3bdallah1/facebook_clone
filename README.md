@@ -1,16 +1,25 @@
 # facebook_clone
 
-A new Flutter project.
+Facebook clone using Riverpod and Firebase configurations.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+⚫ Design Architecture: using a combination of features and MVVM Design pattern 
 
-A few resources to get you started if this is your first Flutter project:
+⚫ State management: using Riverpod state management for efficient state management
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+⚫ Firebase Auth: Using Firebase auth to log in via account to get uid for every user
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+⚫ Firebase storage: Using Firebase storage to store and retrieve images and videos
+
+⚫ Firebase Firestore: Using Firebase for storing users, posts, messages and stories data.
+
+⚫ Packages: Using packages like (Story View - Video player - image picker - cached network image) for displaying the media in the app.
+
+⚫ Packages: Using Uuid package to generate a uid for every post, video, story, and chat rooms
+
+![aaa](https://github.com/Ahmed3bdallah1/facebook_clone/assets/122252444/5f516df3-b86c-40db-930f-22fd06e771b1)
+![1aa](https://github.com/Ahmed3bdallah1/facebook_clone/assets/122252444/8243aca6-e95b-436b-bb1e-d52499e4e752)
+![2aa](https://github.com/Ahmed3bdallah1/facebook_clone/assets/122252444/ad10fae9-170b-4f25-8487-69a94644cd28)
+![qq](https://github.com/Ahmed3bdallah1/facebook_clone/assets/122252444/21da8c4b-24ba-4771-a49b-4bc8d6ae2a3a)
+![Screenshot 2024-02-21 130906](https://github.com/Ahmed3bdallah1/facebook_clone/assets/122252444/df91fdcd-66dd-498d-a71a-ba889fe4e7af)
