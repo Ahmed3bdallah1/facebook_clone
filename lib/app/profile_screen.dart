@@ -10,6 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({
@@ -249,7 +250,83 @@ class ProfileScreen extends ConsumerWidget {
         return const Center(child: Icon(Icons.error));
       },
       loading: () {
-        return const Center(child: CircularProgressIndicator());
+        return const ProfileShimmer();
+      },
+    );
+  }
+}
+
+class ProfileShimmer extends StatelessWidget {
+  const ProfileShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: 8,
+      padding: const EdgeInsets.all(0),
+      itemBuilder: (context, index) {
+        return Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              border: Border.all(color: Theme.of(context).focusColor),
+              color: Theme.of(context).disabledColor,
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    spreadRadius: 1,
+                    blurRadius: 5)
+              ]),
+          margin: const EdgeInsets.only(bottom: 15),
+          padding: const EdgeInsets.all(10),
+          child: Shimmer.fromColors(
+            baseColor: Theme.of(context).focusColor,
+            highlightColor: Theme.of(context).primaryColor,
+            enabled: true,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(height: 10, width: 150, color: Colors.white),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Expanded(
+                        child: Container(
+                      height: 85,
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).cardColor,
+                          borderRadius: BorderRadius.circular(5)),
+                    )),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      flex: 3,
+                      child: Column(
+                        children: [
+                          Container(height: 20, color: Colors.white),
+                          const SizedBox(height: 10),
+                          Row(
+                            children: [
+                              Container(
+                                  height: 10,
+                                  width: 70,
+                                  color: Colors.white),
+                              const SizedBox(width: 10),
+                              Container(
+                                  height: 10,
+                                  width: 20,
+                                  color: Colors.white),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
       },
     );
   }

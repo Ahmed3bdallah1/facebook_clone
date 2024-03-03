@@ -14,7 +14,8 @@ class PostsList extends ConsumerWidget {
       data: (postsList) {
         return SliverList.separated(
           itemCount: postsList.length,
-          separatorBuilder: (context, index) => const SizedBox(height: 8),
+          separatorBuilder: (context, index) => Container(
+              height: 10, color: Colors.blueGrey.withOpacity(.3)),
           itemBuilder: (context, index) {
             final post = postsList.elementAt(index);
             return PostTile(post: post);

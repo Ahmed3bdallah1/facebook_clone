@@ -5,12 +5,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../model/user_model.dart';
 
 final getUsersIdInfoProvider =
-    FutureProvider.autoDispose.family<UserModel, String>((ref, userId) {
+    StreamProvider.autoDispose.family<UserModel, String>((ref, userId) {
   return FirebaseFirestore.instance
       .collection(FirebaseCollectionCategoryName.users)
       .doc(userId)
-      .get()
-      .then((user) {
-    return UserModel.fromMap(user.data()!);
+      .snapshots()
+      .map((event) {
+    return UserModel.fromMap(event .data()!);
   });
 });

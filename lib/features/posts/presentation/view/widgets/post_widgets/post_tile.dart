@@ -3,6 +3,7 @@ import 'package:facebook_clone/features/posts/presentation/view/widgets/image_vi
 import 'package:facebook_clone/features/posts/presentation/view/widgets/post_widgets/post_tile_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'like_comment_share_item.dart';
 import 'likes.dart';
 
@@ -24,15 +25,19 @@ class PostTile extends ConsumerWidget {
         // Post Text
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-          child: Text(post.post,style: const TextStyle(fontSize: 16),),
-        ),
-        // Post Video / Image
-        Center(
-          child: ViewPostImagesOrVideo(
-            url: post.fileUrl,
-            fileType: post.postType,
+          child: Text(
+            post.post,
+            style: const TextStyle(fontSize: 16),
           ),
         ),
+        // Post Video / Image
+        if (post.fileUrl != null)
+          Center(
+            child: ViewPostImagesOrVideo(
+              url: post.fileUrl!,
+              fileType: post.postType,
+            ),
+          ),
 
         // Likes and comment buttons
         Padding(

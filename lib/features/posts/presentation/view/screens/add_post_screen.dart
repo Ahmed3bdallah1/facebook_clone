@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:facebook_clone/core/constants/color_constants.dart';
 import 'package:facebook_clone/core/constants/values.dart';
 import 'package:facebook_clone/core/utils/picker_file.dart';
@@ -38,7 +39,7 @@ class _AddPostScreenState extends ConsumerState<AddPostScreen> {
         .read(postsProvider)
         .post(
           post: controller.text,
-          file: file!,
+          file: file,
           postType: fileType,
         )
         .then((value) {

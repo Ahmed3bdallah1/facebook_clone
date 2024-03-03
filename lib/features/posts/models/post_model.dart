@@ -5,7 +5,7 @@ class PostModel {
   final String userId;
   final String post;
   final String postType;
-  final String fileUrl;
+  final String? fileUrl;
   final DateTime createdAt;
   final List<String> likes;
 
@@ -37,7 +37,7 @@ class PostModel {
       userId: map[FirebaseFieldNames.posterId] ?? '',
       post: map[FirebaseFieldNames.content] ?? '',
       postType: map[FirebaseFieldNames.postType] ?? '',
-      fileUrl: map[FirebaseFieldNames.fileUrl] ?? '',
+      fileUrl:map.containsKey(FirebaseFieldNames.fileUrl)? map[FirebaseFieldNames.fileUrl]:null  ,
       createdAt: DateTime.fromMillisecondsSinceEpoch(
         map[FirebaseFieldNames.datePublished] ?? 0,
       ),

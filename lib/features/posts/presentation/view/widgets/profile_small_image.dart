@@ -1,8 +1,39 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:facebook_clone/config/routes/routes.dart';
+import 'package:facebook_clone/features/auth/model/user_model.dart';
 import 'package:facebook_clone/features/auth/presentation/managers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+class ProfileImage2 extends ConsumerWidget {
+  final UserModel userModel;
+  final double? height;
+  final double? width;
+
+  const ProfileImage2(
+      {super.key, required this.userModel, this.height, this.width});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).pushNamed(
+          Routes.profileScreen,
+          arguments: userModel.uid,
+        );
+      },
+      child: ClipOval(
+        child: CachedNetworkImage(
+          height: 40,
+          width: 40,
+          fit: BoxFit.fitWidth,
+          imageUrl: userModel.profilePicUrl,
+          errorWidget: (context, url, error) => const Icon(Icons.error),
+        ),
+      ),
+    );
+  }
+}
 
 class ProfileImage extends ConsumerWidget {
   final String userId;
@@ -21,8 +52,8 @@ class ProfileImage extends ConsumerWidget {
             return ClipOval(
               child: Image.asset(
                 "assets/new_account.jpg",
-                height: height??40,
-                width: width??40,
+                height: height ?? 40,
+                width: width ?? 40,
               ),
             );
           }
@@ -74,8 +105,8 @@ class ProfileImageClipRect extends ConsumerWidget {
             return ClipOval(
               child: Image.asset(
                 "assets/new_account.jpg",
-                height: height??40,
-                width: width??40,
+                height: height ?? 40,
+                width: width ?? 40,
               ),
             );
           }
@@ -84,14 +115,13 @@ class ProfileImageClipRect extends ConsumerWidget {
             final user = snapshot.data;
 
             return SizedBox(
-              height: 120,
-              width: 120,
-              child: CachedNetworkImage(
-                fit: BoxFit.fitWidth,
-                imageUrl: user!.profilePicUrl,
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              )
-            );
+                height: 120,
+                width: 120,
+                child: CachedNetworkImage(
+                  fit: BoxFit.fitWidth,
+                  imageUrl: user!.profilePicUrl,
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                ));
           }
 
           return SizedBox(

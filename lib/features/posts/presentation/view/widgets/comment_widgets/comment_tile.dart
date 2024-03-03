@@ -39,7 +39,7 @@ class CommentInfo extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          ProfileImage(userId: commentModel.authorId),
+          ProfileImage2(userModel:userData),
           Flexible(
             child: Padding(
               padding: const EdgeInsets.only(right: 20, left: 10),

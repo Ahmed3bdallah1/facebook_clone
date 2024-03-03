@@ -24,8 +24,11 @@ class AddStoryTile extends StatelessWidget {
             width: 100,
             child: Stack(
               children: [
-                ProfileImageClipRect(
-                    userId: FirebaseAuth.instance.currentUser!.uid),
+                Positioned(
+                  top: 0,
+                  child: ProfileImageClipRect(
+                      userId: FirebaseAuth.instance.currentUser!.uid),
+                ),
                 const Positioned(
                   bottom: 50,
                   left: 10,

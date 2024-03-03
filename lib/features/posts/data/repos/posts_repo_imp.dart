@@ -26,8 +26,14 @@ class PostsRepoImp extends PostsRepo {
       final DateTime shareTime = DateTime.now();
 
       final path = _storage.ref(postType).child(postId);
-      final taskSnapshot = await path.putFile(file!);
-      final downloadUrl = await taskSnapshot.ref.getDownloadURL();
+
+      String ? downloadUrl ;
+      if(file!=null){
+        final taskSnapshot = await path.putFile(file);
+          downloadUrl = await taskSnapshot.ref.getDownloadURL();
+
+      }
+
 
       PostModel postModel = PostModel(
           postId: postId,

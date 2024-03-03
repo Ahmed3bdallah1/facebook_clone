@@ -8,12 +8,14 @@ class PostsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
+    return CustomScrollView(
       slivers: [
-        MakePostWidget(),
-        StoryListView(),
-        SliverToBoxAdapter(child: SizedBox(height: 8)),
-        PostsList(),
+        const MakePostWidget(),
+        const StoryListView(),
+        SliverToBoxAdapter(child: Container(
+            height: 10, color: Colors.blueGrey.withOpacity(.3)),),
+        const SliverToBoxAdapter(child: SizedBox(height: 8)),
+        const PostsList(),
       ],
     );
   }
